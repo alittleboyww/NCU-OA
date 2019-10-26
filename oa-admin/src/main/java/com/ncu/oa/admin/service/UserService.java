@@ -1,7 +1,15 @@
 package com.ncu.oa.admin.service;
 
 import com.github.pagehelper.PageInfo;
+import com.ncu.oa.admin.pojo.Captcha;
 import com.ncu.oa.admin.pojo.User;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.awt.image.BufferedImage;
+import java.util.Map;
 
 /**
  * Created with IDEA
@@ -11,4 +19,9 @@ import com.ncu.oa.admin.pojo.User;
  */
 public interface UserService {
     PageInfo<User> getUserList(int start, int length);
+
+    Captcha captcha(String cookieId, String captcha);
+    Captcha verifyCaptcha(Captcha captcha, Map<String, String> map);
+    Captcha getCaptchaFromRedis(String cookieId);
+    Captcha updateCaptchaStatus(Captcha captcha);
 }

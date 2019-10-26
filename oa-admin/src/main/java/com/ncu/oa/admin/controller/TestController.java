@@ -26,12 +26,11 @@ import java.io.FileOutputStream;
 public class TestController {
     Logger logger = LoggerFactory.getLogger(TestController.class);
     @GetMapping("/login")
-    @ResponseBody
     public String login() {
         logger.info("-------登录");
-        UsernamePasswordToken token = new UsernamePasswordToken("123","123456");
+        /*UsernamePasswordToken token = new UsernamePasswordToken("123","123456");
         Subject subject = SecurityUtils.getSubject();
-        subject.login(token);
+        subject.login(token);*/
         return "login";
     }
     @GetMapping("/index")
