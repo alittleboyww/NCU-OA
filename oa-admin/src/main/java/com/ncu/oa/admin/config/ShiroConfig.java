@@ -54,10 +54,8 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/image/**", "anon");
         filterChainDefinitionMap.put("/plugin/**", "anon");
         filterChainDefinitionMap.put("/captcha/**", "anon");
-        filterChainDefinitionMap.put("/logout", "logout");
-        filterChainDefinitionMap.put("/", "anon");
         filterChainDefinitionMap.put("/**", "user");
-
+        filterChainDefinitionMap.put("/logout", "logout");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }

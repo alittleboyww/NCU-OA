@@ -1,0 +1,17 @@
+server:
+  port: 9999
+
+spring:
+  thymeleaf:
+    cache: false
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    timeout: 5000ms
+    jedis:
+      pool:
+        max-idle: 8
+        min-idle: 0
+        max-active: 8
+        max-wait: -1

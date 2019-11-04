@@ -22,4 +22,14 @@ public class CommonConstant {
     public static final int VERIFY_ERROR = 400;
     //Invalid
     public static final int VERIFY_INVALID = 300;
+    //账号不存在
+    public static final int NOT_ACCOUNT = 500;
+    //密码不正确
+    public static final int INCORRECT = 501;
+    //是否记住我
+    public static String  REMEBERME = "1";
+
+    //员工身份
+    public static String ADMIN = "admin";
+    public static String STAFF = "staff";
 }

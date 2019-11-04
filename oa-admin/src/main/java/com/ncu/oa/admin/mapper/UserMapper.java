@@ -36,6 +36,6 @@ public interface UserMapper {
 
     //
     @Select("select * from tb_user where staffId=#{staffId}")
-    User findUserByStaffId(@Param("staffId") int staffId);
+    User findUserByStaffId(@Param("staffId") String staffId);
 
 }

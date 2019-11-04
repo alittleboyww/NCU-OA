@@ -16,6 +16,7 @@ public class MD5SaltUtil {
         System.out.println(salt);
         int hashIterations = 1024;//加密1024次
         Object result = new SimpleHash(hashAlgorithmName, credentials, salt, hashIterations);
+        System.out.println(((SimpleHash) result).toHex());
         return result;
     }
 

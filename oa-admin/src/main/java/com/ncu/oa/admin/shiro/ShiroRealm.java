@@ -8,6 +8,8 @@ import com.ncu.oa.admin.pojo.Role;
 import com.ncu.oa.admin.pojo.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
+import org.apache.shiro.authc.credential.CredentialsMatcher;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -69,12 +71,21 @@ public class ShiroRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         String staffId = (String) authenticationToken.getPrincipal();
-        String password = new String((char []) authenticationToken.getCredentials());
-        User user = userMapper.findUserByStaffId(Integer.parseInt(staffId));
+        User user = userMapper.findUserByStaffId(staffId);
         if(user == null){
             throw new UnknownAccountException();
         }
-        ByteSource salt = ByteSource.Util.bytes(""+staffId);
-        return new SimpleAuthenticationInfo(staffId,password,salt,getName());
+        String salt = user.getPasswordSalt();
+        String password = user.getPassword();
+        ByteSource salts = ByteSource.Util.bytes(salt);
+        return new SimpleAuthenticationInfo(staffId,password,salts,getName());
+    }
+
+    @Override
+    public void setCredentialsMatcher(CredentialsMatcher credentialsMatcher) {
+        HashedCredentialsMatcher matcher = new HashedCredentialsMatcher();
+        matcher.setHashAlgorithmName("md5");
+        matcher.setHashIterations(1024);
+        super.setCredentialsMatcher(matcher);
     }
 }

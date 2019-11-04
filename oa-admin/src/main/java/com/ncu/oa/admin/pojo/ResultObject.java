@@ -2,6 +2,8 @@ package com.ncu.oa.admin.pojo;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * Created with IDEA
  * author:G.B.Monkey
@@ -9,7 +11,7 @@ import lombok.Data;
  * Time:19:06
  */
 @Data
-public class ResultObject {
+public class ResultObject implements Serializable {
     //响应码
     private int code;
     //返回信息

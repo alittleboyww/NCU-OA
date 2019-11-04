@@ -13,7 +13,7 @@ public class User implements Serializable{
 	private Integer id;
 	private String staffId;
 	private String password;
-	private Date passwordSalt;
+	private String passwordSalt;
 	private int status;
 	private Date createTime;
 	private Date updateTime;
