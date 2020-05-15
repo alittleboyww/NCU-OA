@@ -30,7 +30,7 @@
         <sdk-oss.version>3.6.0</sdk-oss.version>
         <commons-fileupload.version>1.4</commons-fileupload.version>
         <lombok.version>1.18.8</lombok.version>
-        <jackson.version>2.9.5</jackson.version>
+        <jackson.version>2.11.0</jackson.version>
         <jackson-asl.version>1.9.13</jackson-asl.version>
     </properties>
     <dependencies>
